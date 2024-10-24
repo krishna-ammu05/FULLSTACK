@@ -1,0 +1,68 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background: #c94b4b;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4b134f, #c94b4b);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4b134f, #c94b4b);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    border-radius: 8px;
+    background-color: whitesmoke;
+    height: 50vh;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow:
+        1.9px 1.7px 1.6px rgba(0, 0, 0, 0.024),
+        4.3px 3.8px 3.6px rgba(0, 0, 0, 0.035),
+        7.4px 6.5px 6.3px rgba(0, 0, 0, 0.043),
+        11.8px 10.4px 10px rgba(0, 0, 0, 0.05),
+        18.2px 16px 15.5px rgba(0, 0, 0, 0.057),
+        28.3px 25px 24.1px rgba(0, 0, 0, 0.065),
+        47px 41.5px 40px rgba(0, 0, 0, 0.076),
+        94px 83px 80px rgba(0, 0, 0, 0.1);
+}
+
+.login-input {
+    border-radius: 4px;
+    padding: 1rem;
+    width: 88%;
+    border: 0px;
+    outline: none;
+    box-shadow: 70px 7px 80px rgba(246, 245, 245, 0.07);
+    border-bottom: 2px solid transparent;
+
+
+}
+
+.login-input:focus {
+    border-bottom: 2px solid #c94b4b;
+}
+
+.login-button {
+    border-radius: 4px;
+    padding: 1rem;
+    outline: none;
+    width: 50%;
+    font-weight: bold;
+    background: #c94b4b;
+    ;
+    cursor: pointer;
+}
+
+.login-input:hover {
+    cursor:pointer;
+}

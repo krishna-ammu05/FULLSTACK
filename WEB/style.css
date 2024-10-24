@@ -1,0 +1,41 @@
+/* element selector */
+p{
+    color:blue;
+}
+
+/* universal selector */
+*{
+    background-color:burlywood;
+}
+/* class selector(best) */
+.myclass{
+    background-color:green;
+    
+}
+/* ID selector */
+#myclass{
+    background-color:blanchedalmond;
+}
+body{
+    margin:0px;
+    padding:0px;
+    background-color: aliceblue;
+    height:100vh;
+    width:100wh;
+    display:flex;
+    
+
+}
+.auth-form{
+    height:40vh;
+    width:40wh;
+    background-color: aquamarine;
+    border:1px solid gray;
+
+}
+.f1{
+background-color: rgb(237, 178, 28);
+}
+.f2{
+background-color: aqua;
+}
