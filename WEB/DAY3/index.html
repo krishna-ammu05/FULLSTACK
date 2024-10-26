@@ -9,51 +9,90 @@
 </head>
 
 <body>
-    <form class="login-form">
-         <h1>LOGIN</h1>
-        <input type="email" name="email" class="login-input" placeholder="Email" required>
-        <input type="password" name="password" class="login-input" placeholder="Password" required>
+    <form class="login-form" onsubmit="Login(event)">
+        <h1>LOGIN</h1>
+        <input type="email" name="email" class="login-input" id="email" placeholder="Email" required>
+        <input type="password" name="password" class="login-input" id="password" placeholder="password" required>
         <input type="submit" value="login" class="login-button">
     </form>
+    <!-- <button class="login-btn" onclick ="myfunction()">click</button> -->
 </body>
+
 <script>
     //variales
     console.log("hello");
     //alert("Hello");
-    let x="10";
+    let x = "10";
     console.log(x)
-    x=30
+    x = 30
     console.log(x)
-    x=false
+    x = false
     console.log(x)
-    x=null
+    x = null
     console.log(x)
-    x=undefined
+    x = undefined
     console.log(x)
     //objects JS,JSON
-    let obj={
-        name:"krishna"
-        ,loc:"a",
-        age:200,
-        isalive:false
+    let obj = {
+        name: "krishna"
+        , loc: "a",
+        age: 200,
+        isalive: false
     }
-    let obj2={
-        name:"Shiva",
-        loc:"bb",
-        age:100,
-        isalive:true
+    let obj2 = {
+        name: "Shiva",
+        loc: "bb",
+        age: 100,
+        isalive: true
     }
-    console.log(obj,obj2);
-    let arr=["a",obj,x,obj2]
+    console.log(obj.name)
+    const {name,loc,age,isalive }= obj2
+    console.log(name)
+    console.log(obj, obj2);
+    let arr = ["a", obj, x, obj2]
     console.log(arr);
-    let arr1=["ab",12,0.8,false]
-    console.log(arr1)
-    let arr3=arr+arr1
+    let arr2 = [1, 2, 3, 4, 5, 6];
+    let arr3 = [arr, arr2];
+    let arr4 = [...arr, "abcd", ...arr2];
     console.log(arr3);
-    let a=[1,4,5,6]
-    let b=[5,3,4,2]
-    let c=a+b
-    console.log(c);
+    console.log(arr4);
 
+    function myfunction() {
+        console.error("HELLO FSD")
+        console.warn("hello man")
+    }
+    //  myfunction()
+    // let myfunction =(a,b)=>a*b;
+    function Login(event) {
+        event.preventDefault()
+        let email = document.getElementById('email').value;
+        let password = document.getElementById("password").value;
+        console.log("Login :" + email + " " + password);
+        if (password.length < 6) {
+            alert("password should contain more than 6 letters");
+        }
+        else if (email === "krishnaveni5104@gmail.com" && password === "5106040") {
+            alert("Login successful")
+            API()
+        }
+        else {
+            alert("Invalid Credentials")
+        }
+    }
+
+   async function API() {
+        console.log("called API")
+        try{
+            //cpoyimg url 
+            const response= await fetch("https://671b71452c842d92c37ff0a7.mockapi.io/application/projects")
+            if(response.status===200){
+            console.log("success")
+            console.log(await response.json())}
+        }
+        catch(error){
+            console.error(error)
+        }
+    }
 </script>
+
 </html>

@@ -1,0 +1,10 @@
+function API() {
+    console.log("called API")
+    try{
+        //cpoyimg url 
+        const response=fetch("https://671b71452c842d92c37ff0a7.mockapi.io/application/projects")
+        console.log(response)
+    }catch(error){
+        console.error(error)
+    }
+}
