@@ -19,12 +19,6 @@ const Contact = () => {
                         <option>Svelte</option>
                     </select>
                 </div>
-
-
-
-
-
-
             </div>
         </>
     )
