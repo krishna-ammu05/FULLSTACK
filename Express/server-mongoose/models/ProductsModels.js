@@ -5,7 +5,7 @@ const ProductsSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    img:{//url
+    img:{
         type:String,
         required:true
     },
@@ -17,4 +17,4 @@ const ProductsSchema=new mongoose.Schema({
 
 const Products = mongoose.model("Products",ProductsSchema)
 
-module.exports=mongoose
+module.exports= Products;

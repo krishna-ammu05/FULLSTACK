@@ -16,15 +16,15 @@ const UserSchema=new mongoose.Schema({
         unique:true
     },
     password:{
-        type:string,
+        type:String,
         required:true
     },
     address:{
-        type:string,
+        type:String,
         //required:true
     },
 })
 
 const Users = mongoose.model("Users",UserSchema)
 
-module.exports=mongoose
+module.exports=Users
