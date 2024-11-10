@@ -1,7 +1,7 @@
 const AdminTopBar = () => {
   return (
     
-    <div className='w-full h-full shadow-purple-400 shadow-sm flex justify-end items-center px-4'>
+    <div className='w-full h-full shadow-purple-400 shadow-sm flex justify-center items-center'>
       AdminTopBar
       </div>
   )

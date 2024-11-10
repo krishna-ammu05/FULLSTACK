@@ -8,8 +8,8 @@ const Home = () => {
     <div className=" flex flex-col justify-start items-start w-screen h-full">
          
          <HomeCarousel/>
-         { <HomeCard/> }
-         {<SocialCard/> }
+          <HomeCard/> 
+         <SocialCard/> 
     </div>
     </>
   )

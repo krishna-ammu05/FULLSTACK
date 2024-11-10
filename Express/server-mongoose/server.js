@@ -1,5 +1,7 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
+app.use(cors())
 const port = 2000
 app.use(express.json())//incoming request
 const db = require('./config/db')

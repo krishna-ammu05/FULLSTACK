@@ -9,6 +9,8 @@ import Contact from './pages/Contact'
 import Products from './pages/Products'
 import WebLayout from './layout/WebLayout'
 import TwClasses from './pages/TwClasses'
+import AdminOrders from './pages/Admin/AdminOrders'
+
 
 const App = () => {
     return (
@@ -24,9 +26,13 @@ const App = () => {
                     </Route>
                     <Route element={<AdminLayout />}>
                         <Route path='/admin/dashboard' element={<AdminDashboard/>} />
-                        <Route path='/admin/product' element={<AdminProducts/>} />
+                        <Route path='/admin/products' element={<AdminProducts/>} />
                         <Route path='/admin/users' element={<AdminUsers/>} />
                         <Route path='/admin/settings' element={<AdminSettings/>} />
+                        <Route path='/admin/orders' element={<AdminOrders/>} />
+                        
+                        {/* <Route path='/admin/dashboardhomecard' element={<AdminDashboardHomeards/>} /> */}
+
                     </Route>
                 </Routes>
             </BrowserRouter>
