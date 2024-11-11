@@ -16,11 +16,31 @@ router.get('/all',async(req,res)=>
 //POST
 router.post('/add',async(req,res)=>{
     try{
-        const UserData = new Users(req.body)
-        const {name,email,phone,password } = UserData
-        if(!name||!email||!phone||!password){
-            return res.status(401).json({message:"All fields required"})  
+         // const newuser = new Users(req.body)
+         const { name, email, phone, password, role } = req.body
+         if (!name || !email || !phone || !password || !role) {
+             return res.status(401).json({ message: "All fields required" })
+
         }
+        const exisitingemail = await Users.findOne({ email })
+        if (exisitingemail) {
+            return res.status(500).json({ message: `User with ${email} already exists !` })
+        }
+        //phone
+        const exisitingphone = await Users.findOne({ phone })
+        if (exisitingphone) {
+            return res.status(500).json({ message: `User with ${phone} already exists !` })
+        }
+        const salt = await bcrypt.genSalt(10)
+        const hashedpassword = await bcrypt.hash(password, salt)
+        const newuser = new Users({
+            name,
+            email,
+            phone,
+            role,
+            password: hashedpassword
+        })
+
         await UserData.save()
         return res.status(201).json(UserData)
     }
