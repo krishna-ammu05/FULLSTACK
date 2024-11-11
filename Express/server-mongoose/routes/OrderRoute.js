@@ -2,19 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Orders=require('../models/OrdersModels')
 const { trusted } = require('mongoose')
-const validate = require('../config/auth')
+// const validate = require('../config/auth')
 
-router.get('/all', validate, async (req,res)=>{
-    try{
-        const products = await Products.find()
-        res.status(200).json(products)
-    }catch(error){
-        res.status(500).json({message:error.message})
-    }
-})
-
-
-router.get('/all', validate,async(req,res)=>
+router.get('/all',async(req,res)=>
 {
     try{
         const orders = await Orders.find()
@@ -25,7 +15,7 @@ router.get('/all', validate,async(req,res)=>
     }
 })
 //POST
-router.post('/add',validate,async(req,res)=>{
+router.post('/add',async(req,res)=>{
     try{
         const OrderData = new Orders(req.body)
         const {userID,phone,price,email,orderDate, shippingDate} = OrderData
@@ -42,7 +32,7 @@ router.post('/add',validate,async(req,res)=>{
 
 
 //PUT
-router.put('/edit/:id',validate,async(req,res)=>{
+router.put('/edit/:id',async(req,res)=>{
     try{
         const id = req.params.id
         const existingorder = await Orders.findOne({_id:id})

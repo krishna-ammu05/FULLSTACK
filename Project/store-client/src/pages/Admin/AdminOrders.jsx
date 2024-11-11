@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import AdminPageHeader from '../../components/Admin/AdminPageHeader'
 import { Loader2,Pencil,Trash,TriangleAlert } from 'lucide-react'
 import {getOrders} from '../../Api/api'
@@ -6,7 +6,7 @@ const AdminOrders = () => {
 
   const [orders, setOrders] = useState(null)
   const [loading, setLoading] = useState(true)
-  async function fetchData() {
+  const fetchData=async()=> {
     try {
       const res = await getOrders()
       if (res.status === 200) {
@@ -47,38 +47,40 @@ const AdminOrders = () => {
     <div className='w-full h-full flex flex-col justify-start items-start'>
       <AdminPageHeader title='Orders' />
       <table className='w-full h-full border-collapse border shadow-lg rounded-md'>
-        <thead className='shadow-sm font-bold text-purple-500 text-left'>
+        <thead className='shadow-sm font-bold text-opacity-80 text-purple-500 text-left'>
           <tr>
-            <th className='p-6'>userID</th>
-            <th className='p-6'>phone</th>
-            <th className='p-6'>price</th>
-            <th className='p-6'>email</th>
-            <th className='p-6'> orderDate</th>
-            <th className='p-6'>shippingDate</th>
+            <th className='p-6'>UID</th>
+            <th className='p-6'>Phone</th>
+            <th className='p-6'>Price</th>
+            <th className='p-6'>Email</th>
+            <th className='p-6'>OrderDate</th>
+            <th className='p-6'>ShippingDate</th>
+            <th className='p-6'>Action</th>
           </tr>
         </thead>
         <tbody>
           {
-            // orders.map((order, index) => (
-            //   <tr key={index}>
-            //     <td className='p-4'>{order.userID} </td>
-            //     <td className='p-4'>{order.phone}</td>
-            //     <td className='p-4'>{order.price}</td>
-            //     <td className='p-4'>{order.email}</td>
-            //     <td className='p-4'>{order. orderDate}</td>
-            //     <td className='p-4'>{order.shippingDate}</td>
+            orders.map((order, index) => (
+              <tr key={index}>
+                <td className='p-4'>{order.userID} </td>
+                <td className='p-4'>{order.phone}</td>
+                <td className='p-4'>{order.price}</td>
+                <td className='p-4'>{order.email}</td>
+                <td className='p-4'>{order. orderDate}</td>
+                <td className='p-4'>{order.shippingDate}</td>
                 
-            //     <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
-            //       <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
-            //    hover:bg-blue-500 hover:text-white hover:shadow-blue-500'>
-            //         <Pencil />
-            //       </button>
-            //       <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
-            //    hover:bg-red-500 hover:text-white hover:shadow-red-500'>
-            //         <Trash />
-                  // </button>
-                // </td>
-              // </tr>
+                <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
+                  <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
+               hover:bg-blue-500 hover:text-white hover:shadow-blue-500'>
+                    <Pencil />
+                  </button>
+                  <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
+               hover:bg-red-500 hover:text-white hover:shadow-red-500'>
+                    <Trash />
+                  </button>
+                </td>
+              </tr>
+            ))
           
           
           }
@@ -101,11 +103,5 @@ const AdminOrders = () => {
       </table>
     </div>
   )
-    return (
-        <div className='w-full min-h-[vh] flex flex-col justify-start items-start'>
-            <AdminPageHeader title='Orders'/>
-            table
-        </div>
-    )
 }
 export default AdminOrders

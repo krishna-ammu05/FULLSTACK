@@ -5,22 +5,25 @@ import { getProducts } from '../../Api/api'
 const AdminProducts = () => {
   const [products, setProducts] = useState(null)
   const [loading, setLoading] = useState(true)
-  async function fetchData() {
+  //fetching data from backend
+  const fetchData = async() =>{
     try {
       const res = await getProducts()
       if (res.status === 200) {
         setProducts(res.data)
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
     finally {
       setLoading(false)
     }
   }
+  //used to redenering
   useEffect(() => {
     fetchData()
   }, [])
+
   if (loading) {
     return (
       <>
@@ -44,7 +47,7 @@ const AdminProducts = () => {
   }
   return (
     <div className='w-full h-full flex flex-col justify-start items-start'>
-      <AdminPageHeader title='Products' />
+      <AdminPageHeader title='Products'/>
       <table className='w-full h-full border-collapse border shadow-lg rounded-md'>
         <thead className='shadow-sm font-bold text-purple-500 text-left'>
           <tr>
@@ -55,6 +58,8 @@ const AdminProducts = () => {
         </thead>
         <tbody>
           {
+            //to pass array we are using map
+            //index->imaginary key ,using as looping key
             products.map((product, index) => (
               <tr key={index}>
                 <td className='p-4'>{product.name} </td>

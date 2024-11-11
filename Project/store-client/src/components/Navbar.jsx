@@ -1,6 +1,9 @@
+import { User2, Users } from "lucide-react"
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
 
 const Navbar = () => {
+    const [showLogin, setshowLogin]=useState(false)
     const Linksdata = [
         {
             title: 'Home',
@@ -29,6 +32,11 @@ const Navbar = () => {
                             </NavLink>
                         ))
                         }
+                        <div>
+                            <button className="h-9 w-9 flex justify-center items-center bottom-3 border-black rounded-full hover:purple-500">
+                                <Users className="h-6 w-6"/>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
