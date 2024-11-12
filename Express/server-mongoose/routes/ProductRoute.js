@@ -29,7 +29,7 @@ router.post('/add',async (req, res) => {
 })
 
 // Method : PUT  || API : localhost:3000/products/edit/_id
-router.put('/edit/:id', validate, async (req, res) => {
+router.put('/edit/:id',  async (req, res) => {
     try {
         const id = req.params.id
         const existingproduct = await Products.findOne({ _id: id })
@@ -44,7 +44,7 @@ router.put('/edit/:id', validate, async (req, res) => {
 })
 
 // Method : DELETE  || API : localhost:3000/products/delete/_id
-router.delete('/delete/:id', validate, async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id
         const existingproduct = await Products.findOne({ _id: id })

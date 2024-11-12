@@ -1,65 +1,70 @@
-const express = require('express')
-const router = express.Router()
-const Orders=require('../models/OrdersModels')
-const { trusted } = require('mongoose')
-// const validate = require('../config/auth')
+const express = require('express');
+const router = express.Router();
+const Orders = require('../models/OrdersModels');
 
-router.get('/all',async(req,res)=>
-{
-    try{
-        const orders = await Orders.find()
-        res.status(200).json(orders)
+// GET all orders
+router.get('/all', async (req, res) => {
+    try {
+        const orders = await Orders.find();
+        res.status(200).json(orders);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
-    catch(error){
-        res.status(500).json({message:error})
-    }
-})
-//POST
-router.post('/add',async(req,res)=>{
-    try{
-        const OrderData = new Orders(req.body)
-        const {userID,phone,price,email,orderDate, shippingDate} = OrderData
-        if(!userID||!phone||!price||!email||!orderDate||!shippingDate){
-            res.status(401).json({message:"All fields required"})  
+});
+
+// POST new order
+router.post('/', async (req, res) => {
+    try {
+        const { userID, phone, price, email, orderDate, shippingDate } = req.body;
+
+        // Check if any required field is missing
+        if (!userID || !phone || !price || !email || !orderDate || !shippingDate) {
+            return res.status(400).json({ message: "All fields required" }); // 400 Bad Request
         }
-        const storedata = await OrderData.save()
-        res.status(201).json(OrderData)
-    }
-    catch(error){
-        res.status(500).json({message:error.message})
-    }
-})
 
+        // Create and save the new order
+        const orderData = new Orders(req.body);
+        const storeData = await orderData.save();
+        res.status(201).json(storeData); // 201 Created
+    } catch (error) {
+        res.status(500).json({ error: error.message }); // 500 Internal Server Error
+    }
+});
 
-//PUT
-router.put('/edit/:id',async(req,res)=>{
-    try{
-        const id = req.params.id
-        const existingorder = await Orders.findOne({_id:id})
-        if(!existingorder){
-            res.status(404).json({message:"Product not found"})
+// PUT update order by ID
+router.put('/edit/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const existingOrder = await Orders.findOne({ _id: id });
+
+        if (!existingOrder) {
+            return res.status(404).json({ message: "Order not found" }); // 404 Not Found
         }
-        const updateorder = await Orders.findByIdAndUpdate(id,req.body,{new:true})
-        res.status(200).json(updateorder)
-    }  
-    catch(error){
-        res.status(500).json({message:error.message})
-    }  
-})
 
-//DELETE
-router.delete('/delete/:id',async(req,res)=>{
-    try{
-        const id = req.params.id
-        const existingorder = await Orders.findOne({_id:id})
-        if(!existingorder){
-            res.status(404).json({message:"Order not found"})
+        // Update the order and return the updated order
+        const updateOrder = await Orders.findByIdAndUpdate(id, req.body, { new: true });
+        res.status(200).json(updateOrder); // 200 OK
+    } catch (error) {
+        res.status(500).json({ error: error.message }); // 500 Internal Server Error
+    }
+});
+
+// DELETE order by ID
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const existingOrder = await Orders.findOne({ _id: id });
+
+        if (!existingOrder) {
+            return res.status(404).json({ message: "Order not found" }); // 404 Not Found
         }
-        await Orders.findByIdAndDelete(id)
-        res.status(200).json({message:"Product Deleted"})
+
+        // Delete the order and return confirmation
+        await Orders.findByIdAndDelete(id);
+        res.status(200).json({ message: "Order deleted", order: existingOrder }); // 200 OK
+    } catch (error) {
+        res.status(500).json({ error: error.message }); // 500 Internal Server Error
     }
-    catch(error){
-        res.status(500).json({message:error.message})
-    }
-})
-module.exports= router
+});
+
+module.exports = router;
