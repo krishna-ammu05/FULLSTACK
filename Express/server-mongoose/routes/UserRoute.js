@@ -1,7 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const Users=require('../models/UserModels')
+const bcrypt = require('bcrypt')
 const { trusted } = require('mongoose')
+
+router.get('/count', async (req, res) => {
+    try {
+        const count = await Users.countDocuments()
+        return res.status(200).json({ count: count })
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
+})
 
 router.get('/all',async(req,res)=>
 {
@@ -41,8 +51,8 @@ router.post('/add',async(req,res)=>{
             password: hashedpassword
         })
 
-        await UserData.save()
-        return res.status(201).json(UserData)
+        await newuser.save()
+        return res.status(201).json({message:"user added"})
     }
     catch(error){
         return res.status(500).json({message:error.message})
@@ -56,7 +66,7 @@ router.put('/edit/:id',async(req,res)=>{
         const id = req.params.id
         const existinguser = await Users.findOne({_id:id})
         if(!existinguser){
-            res.status(404).json({message:"User not found"})
+            res.status(409).json({message:"User not found"})
         }
         const updateuser = await Users.findByIdAndUpdate(id,req.body,{new:true})
         res.status(200).json(updateuser)
@@ -72,7 +82,7 @@ router.delete('/delete/:id',async(req,res)=>{
         const id = req.params.id
         const existinguser = await Users.findOne({_id:id})
         if(!existinguser){
-            res.status(404).json({message:"User not found"})
+            res.status(409).json({message:"User not found"})
         }
         await Users.findByIdAndDelete(id)
         res.status(200).json({message:"User Deleted"})

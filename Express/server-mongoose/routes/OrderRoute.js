@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Orders = require('../models/OrdersModels');
 
+router.get('/count',async(req,res)=>{
+    try {
+         const count = await Orders.countDocuments()
+         return res.status(200).json({count:count})
+    } catch (error) {
+        return res.status(500).json({ message: error.message }) 
+    }
+})
+
 // GET all orders
 router.get('/all', async (req, res) => {
     try {

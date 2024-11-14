@@ -1,13 +1,13 @@
 import React, {useEffect,useRef,useState} from 'react'
 import AdminPageHeader from '../../components/Admin/AdminPageHeader'
-import { Loader2,Pencil, Plus,Trash,TriangleAlert, X } from 'lucide-react'
-import {getOrders,addOrder,deleteOrder} from '../../Api/api'
+import { Loader2,Pencil, Trash,TriangleAlert, } from 'lucide-react'
+import {getOrders} from '../../Api/api'
 import { toast } from 'sonner'
 const AdminOrders = () => {
 
   const [orders, setOrders] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [showAdd,setShowAdd] = useState(false)
+  //const [showAdd,setShowAdd] = useState(false)
 
 
   const userIDRef = useRef('')
@@ -32,42 +32,42 @@ const AdminOrders = () => {
     }
   }
 
-  const handleAdd = async (e) => {
-    e.preventDefault()
-    const order = {
-      userID: userIDRef.current.value,
-      phone:phoneRef.current.value,
-      price:priceRef.current.value,
-      email:emailRef.current.value,
-      orderDate:orderDateRef.current.value
+  // const handleAdd = async (e) => {
+  //   e.preventDefault()
+  //   const order = {
+  //     userID: userIDRef.current.value,
+  //     phone:phoneRef.current.value,
+  //     price:priceRef.current.value,
+  //     email:emailRef.current.value,
+  //     orderDate:orderDateRef.current.value
 
-    }
-    try {
-      const response = await addOrder(order)
-      if(response.status===200){
-        console.log("Order placed")
-        setShowAdd(false)
-        fetchData()
-      }
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  //   }
+  //   try {
+  //     const response = await addOrder(order)
+  //     if(response.status===200){
+  //       console.log("Order placed")
+  //       setShowAdd(false)
+  //       fetchData()
+  //     }
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
-  const handleDelete =async (id)=>{
-    try {
-      const response = await deleteOrder(id)
-      if(response.status===200){
-        console.log('Order Deleted!')
+  // const handleDelete =async (id)=>{
+  //   try {
+  //     const response = await deleteOrder(id)
+  //     if(response.status===200){
+  //       console.log('Order Deleted!')
 
-        toast.success("Product Deleted")
-        fetchData()
-      }
-    } catch (error) {
-      console.error(error)
-    }
+  //       toast.success("Product Deleted")
+  //       fetchData()
+  //     }
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
 
-  }
+  // }
   useEffect(() => {
     fetchData()
   }, [])
@@ -96,12 +96,12 @@ const AdminOrders = () => {
     <div className='w-full h-full flex flex-col justify-start items-start'>
       <div className='w-full flex flex-row justify-between items-center my-4 shadow-md rounded-md p-1 border'>
         <AdminPageHeader title='Orders' />
-        <button className='w-10 h-10 font-bold flex justify-center items-center border-2 border-green-500 rounded-md
+        {/* <button className='w-10 h-10 font-bold flex justify-center items-center border-2 border-green-500 rounded-md
          text-green-500 shadow-md hover:text-white hover:bg-green-500 hover:shadow-md
           hover:shadow-green-400'
           onClick={() => setShowAdd(!showAdd)} >
           <Plus className='w-8 h-8' />
-        </button>
+        </button> */}
       </div>
       <table className='w-full h-full border-collapse border shadow-lg rounded-md'>
         <thead className='shadow-sm font-bold text-opacity-80 text-purple-500 text-left'>
@@ -132,7 +132,7 @@ const AdminOrders = () => {
                     <Pencil />
                   </button>
                   <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
-               hover:bg-red-500 hover:text-white hover:shadow-red-500'onClick={()=>handleDelete(order._id)}>
+               hover:bg-red-500 hover:text-white hover:shadow-red-500'>
                     <Trash />
                   </button>
                 </td>
@@ -159,7 +159,7 @@ const AdminOrders = () => {
         </tbody>
       </table>
 
-      {showAdd && (
+      {/* {showAdd && (
         <>
           <div className="absolute top-0 left-0 z-50 h-screen w-screen flex justify-center items-center bg-black/40 ">
             <div className='h-[85%] w-1/3 flex flex-col justify-center items-center bg-white shadow-2xl rounded-md'>
@@ -182,8 +182,8 @@ const AdminOrders = () => {
             </div>
           </div>
         </>
-      )
-      }
+      ) */}
+      
     </div>
   )
 }
