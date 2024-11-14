@@ -6,7 +6,7 @@ const HomeCarousel = () => {
     <>
       <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
         <div>
-          <img className="h-[60vh] object-cover" src="https://img.freepik.com/premium-photo/display-different-iphones-case-backs-table_1032608-159.jpg?ga=GA1.1.1018548353.1718045618&semt=ais_hybrid" />
+          <img className="h-[60vh] object-cover" src="" />
           {/* <p className="legend">Mobiles</p> */}
 
           <div className="absolute left-2 bottom-2 flex flex-col bg-white rounded-md">
@@ -30,7 +30,7 @@ const HomeCarousel = () => {
           </div>
         </div>
         <div>
-          <img className="h-[60vh] object-cover" src="https://cdn.thewirecutter.com/wp-content/media/2024/07/businesslaptops-2048px-233284-3x2-1.jpg?auto=webp&quality=75&crop=4:3,smart&width=1024" />
+          <img className="h-[60vh] object-cover" src="" />
           {/* <p className="legend">Laptops</p> */}
           <div className="absolute left-2 bottom-2 flex flex-col bg-white rounded-md">
             <div className="px-6 py-0 sm:p-10 sm:pb-6">
@@ -53,7 +53,7 @@ const HomeCarousel = () => {
           </div>
         </div>
         <div>
-          <img className="h-[60vh] object-cover" src="https://img.freepik.com/premium-photo/three-smart-watches-white-background_743511-3258.jpg?w=1060" />
+          <img className="h-[60vh] object-cover" src="" />
           {/* <p className="legend">TV</p> */}
           <div className="absolute left-2 bottom-2 flex flex-col bg-white rounded-md">
             <div className="px-6 py-0 sm:p-10 sm:pb-6">
@@ -76,7 +76,7 @@ const HomeCarousel = () => {
           </div>
         </div>
         <div>
-      <img className="h-[60vh] object-cover" src="https://img.freepik.com/premium-photo/smartphone-with-chinese_1286286-5055.jpg?ga=GA1.1.1018548353.1718045618&semt=ais_hybrid"/>
+      <img className=""/>
          <div className="absolute left-2 bottom-2 flex flex-col bg-white rounded-md">
             <div className="px-6 py-10 sm:p-10 sm:pb-6">
               <div className="grid items-center justify-center w-full grid-cols-1 text-left">
@@ -98,7 +98,7 @@ const HomeCarousel = () => {
           </div>
           </div>
           <div>
-          <img className="h-[60vh] object-cover" src="https://img.freepik.com/premium-photo/three-smart-watches-white-background_743511-3258.jpg?w=1060" />
+          <img className="h-[60vh] object-cover" src="https://www.shutterstock.com/image-photo/modern-interior-open-space-design-260nw-1894377529.jpg" />
           {/* <p className="legend">TV</p> */}
           <div className="absolute left-2 bottom-2 flex flex-col bg-white rounded-md">
             <div className="px-6 py-0 sm:p-10 sm:pb-6">
